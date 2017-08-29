@@ -9,13 +9,16 @@ public class Robot extends SampleRobot {
 	int cannonTriggerPort = 2;
 	int climbPort = 3;
 	
-	int climbButton = 2;
+	int joystickPort = 0;
 	
-	long time = System.currentTimeMillis();
+	int climbButton = 2;
+	int fireButton = 1;
+	
+	long time;
 	int millisPerIteration = 5;
 	
 	TankDrive chassis = new TankDrive(driveLPort, driveRPort);
-	Extreme3DPro joy = new Extreme3DPro(0);
+	Extreme3DPro joy = new Extreme3DPro(joystickPort);
 	Launcher gun = new Launcher(cannonTriggerPort);
 	Climber climber = new Climber(climbPort);
 
@@ -35,12 +38,13 @@ public class Robot extends SampleRobot {
 
 	@Override
 	public void operatorControl() {
+		time = System.currentTimeMillis();
 		while(isEnabled() & isOperatorControl()) {
 			if (System.currentTimeMillis() >= time + millisPerIteration) {
 				
 				chassis.arcadeDrive(joy.getX(), joy.getY());
 				
-				gun.setFiring(joy.getTrigger());
+				gun.setFiring(joy.getButton(fireButton));
 				
 				climber.setSpeed(joy.getThrottle());
 				climber.setClimbing(joy.getButton(climbButton));

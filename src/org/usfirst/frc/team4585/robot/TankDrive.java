@@ -51,6 +51,32 @@ public class TankDrive {
 	private double applyScale(double input, double power) {
 		return Math.copySign(Math.pow(input, power), input);
 	}
+	
+	
+	
+	public void setDeadzoneX(double deadzone) {
+		this.deadX = deadzone;
+	}
+	
+	public void setDeadzoneY(double deadzone) {
+		this.deadY = deadzone;
+	}
+	
+	public void setCoefficientX(double coeff) {
+		this.coeffX = coeff;
+	}
+	
+	public void setCoefficientY(double coeff) {
+		this.coeffY = coeff;
+	}
+	
+	public void setScaleX(double scale) {
+		this.scaleX = scale;
+	}
+	
+	public void setScaleY(double scale) {
+		this.scaleY = scale;
+	}
 }
 
 

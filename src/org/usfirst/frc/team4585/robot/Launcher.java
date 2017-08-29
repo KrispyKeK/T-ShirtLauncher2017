@@ -33,11 +33,12 @@ public class Launcher {
 	
 	public void setFiring(boolean state) {
 		if(state) {
+			setAirLoad(false);
 			fireValve.set(Relay.Value.kOn);
-			setMagazineState(false);
 		}
 		else {
 			fireValve.set(Relay.Value.kOff);
+			setAirLoad(true);
 		}
 	}
 	
@@ -46,15 +47,16 @@ public class Launcher {
 	}
 	public void timedFire(double millis) {
 		
+		setAirLoad(false);
 		fireValve.set(Relay.Value.kOn);
 		Timer.delay(millis/1000);
 		fireValve.set(Relay.Value.kOff);
-		
+		setAirLoad(true);
 	}
 	
-	public void setMagazineState(boolean state) {
+	public void setAirLoad(boolean state) { // true is open, false is closed
 		if(hasMagazineSolenoid)
-			magazineSolenoid.set(state);
+			magazineSolenoid.set(!state);
 	}
 }
 
