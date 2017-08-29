@@ -13,6 +13,10 @@ public class Extreme3DPro {
 		joy = new Joystick(port);
 	}
 	
+	public int getPort() {
+		return this.port;
+	}
+	
 	public double getX() {
 		return joy.getX();
 	}
