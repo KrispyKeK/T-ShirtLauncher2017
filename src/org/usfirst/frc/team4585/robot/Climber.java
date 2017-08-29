@@ -43,6 +43,6 @@ public class Climber {
 	}
 	
 	public boolean getClimb(){
-		return this.climb;
+		return this.isClimbing;
 	}
 }
