@@ -50,6 +50,7 @@ public class TankDrive {
 	
 	private double applyScale(double input, double power) {
 		return Math.copySign(Math.pow(input, power), input);
+		
 	}
 	
 	

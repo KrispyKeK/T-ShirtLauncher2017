@@ -18,15 +18,15 @@ public class Extreme3DPro {
 	}
 	
 	public double getX() {
-		return joy.getX();
+		return joy.getRawAxis(0);
 	}
 	
 	public double getY() {
-		return joy.getY();
+		return joy.getRawAxis(1);
 	}
 	
 	public double getZ() {
-		return joy.getZ();
+		return joy.getRawAxis(2);
 	}
 	
 	public double getThrottle() {

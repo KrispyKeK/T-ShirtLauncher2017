@@ -4,10 +4,10 @@ import edu.wpi.first.wpilibj.SampleRobot;
 
 public class Robot extends SampleRobot {
 	
-	int driveLPort = 1;
-	int driveRPort = 0;
-	int cannonTriggerPort = 2;
-	int climbPort = 3;
+	int driveLPort = 0;
+	int driveRPort = 1;
+	int cannonTriggerPort = 3;
+	int climbPort = 2;
 	
 	int joystickPort = 0;
 	
@@ -19,6 +19,7 @@ public class Robot extends SampleRobot {
 	
 	TankDrive chassis = new TankDrive(driveLPort, driveRPort);
 	Extreme3DPro joy = new Extreme3DPro(joystickPort);
+	//QDSKeyboard keyboard = new QDSKeyboard(joystickPort);
 	Launcher gun = new Launcher(cannonTriggerPort);
 	Climber climber = new Climber(climbPort);
 
@@ -42,11 +43,12 @@ public class Robot extends SampleRobot {
 		while(isEnabled() & isOperatorControl()) {
 			if (System.currentTimeMillis() >= time + millisPerIteration) {
 				
-				chassis.arcadeDrive(joy.getX(), joy.getY());
+				chassis.arcadeDrive(-joy.getZ(), joy.getY());
+				//chassis.arcadeDrive(keyboard.getAxisAD(), keyboard.getAxisWS());
 				
 				gun.setFiring(joy.getButton(fireButton));
 				
-				climber.setSpeed(joy.getThrottle());
+				climber.setSpeed(-joy.getThrottle());
 				climber.setClimbing(joy.getButton(climbButton));
 				
 				time = System.currentTimeMillis();
