@@ -3,11 +3,10 @@ package org.usfirst.frc.team4585.robot;
 import edu.wpi.first.wpilibj.Spark;
 
 
-
 public class Climber {
 	
 	double speed = 0;
-	int speedCoeff = 1; // this is here to reverse the motor if needed
+	double speedCoeff = -1; 
 	Spark motor;
 	boolean isClimbing=false;
 
@@ -25,13 +24,6 @@ public class Climber {
 
 	public void setSpeed(double speed) {
 		this.speed = speed;
-	}
-
-	public void update() {
-		if (isClimbing)
-			motor.set(speed * speedCoeff);
-		else
-			motor.set(0);
 	}
 	
 	public double getSpeed(){

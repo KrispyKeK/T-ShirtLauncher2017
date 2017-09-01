@@ -6,15 +6,18 @@ public class Robot extends SampleRobot {
 	
 	int driveLPort = 0;
 	int driveRPort = 1;
-	int cannonTriggerPort = 3;
+	int cannonTriggerPort = 3; //incorrect port 9/1/2017
 	int climbPort = 2;
 	
 	int joystickPort = 0;
 	
 	int climbButton = 2;
 	int fireButton = 1;
+	int fireSafetyButton = 3;
 	
 	long time;
+	long startTime;
+	long timeTaken
 	int millisPerIteration = 5;
 	
 	TankDrive chassis = new TankDrive(driveLPort, driveRPort);
@@ -42,18 +45,20 @@ public class Robot extends SampleRobot {
 		time = System.currentTimeMillis();
 		while(isEnabled() & isOperatorControl()) {
 			if (System.currentTimeMillis() >= time + millisPerIteration) {
+				startTime=System.currentTimeMillis();
 				
 				chassis.arcadeDrive(-joy.getZ(), joy.getY());
 				//chassis.arcadeDrive(keyboard.getAxisAD(), keyboard.getAxisWS());
 				
-				gun.setFiring(joy.getButton(fireButton));
+				gun.setFiring(joy.getButton(fireButton)&&joy.getButton(fireSafetyButton));
 				
-				climber.setSpeed(-joy.getThrottle());
+				climber.setSpeed(joy.getThrottle());
 				climber.setClimbing(joy.getButton(climbButton));
 				
 				time = System.currentTimeMillis();
+				
+				timeTaken = time-startTime;
 			}
-			
 		}
 	}
 
@@ -62,3 +67,7 @@ public class Robot extends SampleRobot {
 		
 	}
 }
+
+
+
+
