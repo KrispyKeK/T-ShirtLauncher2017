@@ -6,7 +6,7 @@ public class Robot extends SampleRobot {
 	
 	int driveLPort = 0;
 	int driveRPort = 1;
-	int cannonTriggerPort = 3; //incorrect port 9/1/2017
+	int cannonTriggerPort = 0;
 	int climbPort = 2;
 	
 	int joystickPort = 0;
