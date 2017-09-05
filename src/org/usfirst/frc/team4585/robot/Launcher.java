@@ -1,8 +1,7 @@
 package org.usfirst.frc.team4585.robot;
-import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.Relay;
-import edu.wpi.first.wpilibj.Timer;
 
+import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.Timer;
 public class Launcher {
 	
 	int fireValvePort;
@@ -10,13 +9,13 @@ public class Launcher {
 	
 	boolean hasMagazineSolenoid;
 	
-	Relay fireValve;
+	Solenoid fireValve;
 	Solenoid magazineSolenoid;
 	
 	public Launcher(int cannonTriggerPort) {
 		this.fireValvePort = cannonTriggerPort;	
 		
-		fireValve = new Relay(fireValvePort);
+		fireValve = new Solenoid(fireValvePort);
 		
 		hasMagazineSolenoid = false;
 	}
@@ -25,7 +24,7 @@ public class Launcher {
 		this.fireValvePort = cannonTriggerPort;	
 		this.magazineSolenoidPort = magazineSolenoidPort;
 		
-		fireValve = new Relay(fireValvePort);
+		fireValve = new Solenoid(fireValvePort);
 		magazineSolenoid = new Solenoid(magazineSolenoidPort);
 		
 		hasMagazineSolenoid = true;
@@ -34,10 +33,10 @@ public class Launcher {
 	public void setFiring(boolean state) {
 		if(state) {
 			setAirLoad(false);
-			fireValve.set(Relay.Value.kOn);
+			fireValve.set(true);
 		}
 		else {
-			fireValve.set(Relay.Value.kOff);
+			fireValve.set(true);
 			setAirLoad(true);
 		}
 	}
@@ -48,9 +47,9 @@ public class Launcher {
 	public void timedFire(double millis) {
 		
 		setAirLoad(false);
-		fireValve.set(Relay.Value.kOn);
+		fireValve.set(true);
 		Timer.delay(millis/1000);
-		fireValve.set(Relay.Value.kOff);
+		fireValve.set(true);
 		setAirLoad(true);
 	}
 	
