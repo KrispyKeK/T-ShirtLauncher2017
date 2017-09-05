@@ -17,7 +17,7 @@ public class Robot extends SampleRobot {
 	
 	long time;
 	long startTime;
-	long timeTaken
+	long timeTaken;
 	int millisPerIteration = 5;
 	
 	TankDrive chassis = new TankDrive(driveLPort, driveRPort);
@@ -48,7 +48,7 @@ public class Robot extends SampleRobot {
 				startTime=System.currentTimeMillis();
 				
 				chassis.arcadeDrive(-joy.getZ(), joy.getY());
-				//chassis.arcadeDrive(keyboard.getAxisAD(), keyboard.getAxisWS());
+				//chassis.arcadeDrive(-keyboard.getAxisAD(), keyboard.getAxisWS());
 				
 				gun.setFiring(joy.getButton(fireButton)&&joy.getButton(fireSafetyButton));
 				
