@@ -8,8 +8,8 @@ public class TankDrive {
 	private int motorRight;
 	private RobotDrive chassis;
 	
-	private double coeffX = 1;
-	private double coeffY = 1;
+	private double coeffX = .5;
+	private double coeffY = .5;
 	private double scaleX = 2;
 	private double scaleY = 2;
 	private double deadX = .10;
