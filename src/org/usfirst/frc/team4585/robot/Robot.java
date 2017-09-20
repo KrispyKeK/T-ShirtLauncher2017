@@ -12,6 +12,7 @@ public class Robot extends SampleRobot {
 	int joystickPort = 0;
 	
 	int climbButton = 2;
+	int climbInvertButton = 11;
 	int fireButton = 1;
 	int fireSafetyButton = 3;
 	
@@ -52,6 +53,7 @@ public class Robot extends SampleRobot {
 				
 				gun.setFiring(joy.getButton(fireButton)&&joy.getButton(fireSafetyButton));
 				
+				climber.setInverted(joy.getButton(climbInvertButton));
 				climber.setSpeed(joy.getThrottle());
 				climber.setClimbing(joy.getButton(climbButton));
 				

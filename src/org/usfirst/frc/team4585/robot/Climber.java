@@ -9,6 +9,7 @@ public class Climber {
 	double speedCoeff = -1; 
 	Spark motor;
 	boolean isClimbing=false;
+	boolean inverted = false;
 
 	public Climber(int port) {
 		motor = new Spark(port);
@@ -16,10 +17,18 @@ public class Climber {
 
 	public void setClimbing(boolean climb) {
 		this.isClimbing=climb;
-		if (this.isClimbing)
-			motor.set(speed * speedCoeff);
+		if (this.isClimbing) {
+			if(inverted)
+				motor.set(-speed * speedCoeff);
+			else
+				motor.set(speed * speedCoeff);
+		}
 		else
 			motor.set(0);
+	}
+	
+	public void setInverted(boolean inverted) {
+		this.inverted = inverted;
 	}
 
 	public void setSpeed(double speed) {

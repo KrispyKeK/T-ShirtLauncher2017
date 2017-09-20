@@ -10,7 +10,7 @@ public class TankDrive {
 
 	private double coeffX = .75;
 	private double coeffY = .75;
-	private double scaleX = 2;
+	private double scaleX = 3;
 	private double scaleY = 2;
 	private double deadX = .10;
 	private double deadY = .10;

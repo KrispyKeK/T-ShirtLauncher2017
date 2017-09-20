@@ -30,7 +30,7 @@ public class Extreme3DPro {
 	}
 	
 	public double getThrottle() {
-		return -((joy.getThrottle()+1)/2); // maps it from 1:-1 to 0:1
+		return ((joy.getThrottle()+1)/2); // maps it from 1:-1 to 0:1
 	}
 	
 	public double getAxis(int axis) {
