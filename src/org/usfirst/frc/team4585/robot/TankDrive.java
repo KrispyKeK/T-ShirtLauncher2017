@@ -22,7 +22,7 @@ public class TankDrive {
 		chassis.setExpiration(.1);
 	}
 
-	public void arcadeDrive(double magX, double magY) { // x is rotation, y is forward/back
+	public void arcadeDrive(double magX, double magY) { // X is sideways, y is back and forth, z is rotation
 		magX = applyDeadzone(magX, deadX);
 		magY = applyDeadzone(magY, deadY);
 
